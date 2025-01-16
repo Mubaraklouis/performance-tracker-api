@@ -116,7 +116,7 @@ class usersController extends Controller
             if ($course->id == $course_id) {
                 return response()->json([
                     "message" => "You are already enrolled in the course: " . $course->title
-                ]);
+                ],409);
             }
         }
 
