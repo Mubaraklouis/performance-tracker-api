@@ -104,16 +104,31 @@ class usersController extends Controller
      */
     public function assignCourse(Request $request)
     {
-     $user_id =$request->user_id;
-     $course_id =$request->course_id;
+        $user_id = $request->user_id;
+        $course_id = $request->course_id;
 
-     $user = User::find($user_id);
-     $user->courses()->attach($course_id);
+        $user = User::find($user_id);
 
-     return [
-        "user_id"=> $user_id,
-        "course_id"=> $course_id
-     ];
+        // Check if the user is already enrolled in the course
+        $user_courses = $user->courses; // Assuming courses is a relation on User model
+
+        foreach ($user_courses as $course) {
+            if ($course->id == $course_id) {
+                return response()->json([
+                    "message" => "You are already enrolled in the course: " . $course->title
+                ]);
+            }
+        }
+
+        // If not enrolled yet, assign the course to the user
+        $user->courses()->attach($course_id);
+
+        return response()->json([
+            "user_id" => $user_id,
+            "course_id" => $course_id,
+            "message" => "Course successfully assigned"
+        ]);
+
     }
 
     public function courseStudents($course_id){
