@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllassigmentController;
 use App\Http\Controllers\profilePictureController;
 use App\Http\Controllers\usersController;
 use Illuminate\Http\Request;
@@ -86,6 +87,18 @@ Route::prefix('profile-image')->group(function(){
 
 
 Route::get('/auth-user',[usersController::class,'authuserinfo'])->name('user.auth.info');
+
+
+//get all the assigements of the user in all courses
+//get all the courses that the user is enrolled in
+//get the assigments
+
+
+//second approach
+
+//add the course imediately to a table when the course is added
+Route::get('/all-assignments',[AllassigmentController::class,'allAssigments']);
+
 
 
 

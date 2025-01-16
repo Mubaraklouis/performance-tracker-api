@@ -11,6 +11,7 @@ class Assigment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'course_id',
         'title',
         'status',
         'totalMarks',

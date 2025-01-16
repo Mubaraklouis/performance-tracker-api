@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAssigmentRequest;
 use App\Http\Requests\UpdateAssigmentRequest;
+use App\Models\Allassigment;
 use App\Models\Assigment;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class AssigmentController extends Controller
 {
@@ -62,15 +64,45 @@ class AssigmentController extends Controller
     public function store(StoreAssigmentRequest $request)
     {
         $assigment = [
+            "course_id"=>$request->course_id,
             "title"=>$request->title,
-            "status"=>$request->status,
-            "marksObtain"=>$request->marksObtain
+            "marksObtain"=>$request->marksObtain,
+            "totalMarks"=>$request->totalMarks
 
         ];
-        Assigment::created($assigment);
+
+
+
+        Assigment::create($assigment);
+
+        $assigment_info = Assigment::where('title', $request->title)->first();
+
+
+
+
+// Current timestamp
+$currentTimestamp = Carbon::now();
+
+// Add 3 days to the current timestamp
+$deadline = $currentTimestamp->addDays(3);
+
+         //find the course name using the id
+         $module = Course::find($request->course_id)->title;
+         //store the course in all course table
+
+        $assiments_db = [
+            "module" =>$module,
+            "title"=>$request->title,
+            "dateline"=>$deadline,
+            "file" =>$assigment_info->file
+
+           ];
+           Allassigment::create($assiments_db);
         return [
             "message"=>"assigment created"
         ];
+
+
     }
 
     /**
