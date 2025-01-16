@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('allassigments', function (Blueprint $table) {
             $table->id();
-            $table->string('module');
+            $table->string('module')->nullable();
             $table->string('title');
             $table->string('dateline')->nullable();
             $table->string('file')->nullable();

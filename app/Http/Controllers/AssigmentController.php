@@ -28,7 +28,7 @@ class AssigmentController extends Controller
 
      */
 
-     public function submitAssigment( Request $request,$assigment_id){
+     public function submitAssigment( Request $request,$assigment_id,Allassigment $allassigment){
         $assigment = Assigment::find($assigment_id);
 
         //get the file
@@ -40,12 +40,27 @@ class AssigmentController extends Controller
 
         $assigment = Assigment::find($assigment_id);
 
+
+        $allAfile = $assigment->where('title',$assigment->title)->first()->file;
+       $Aa= $allassigment->where('title',$assigment->title)->first();
+
+       $f=$Aa->file = Storage::disk('public')->url($filePath);;
+       Allassigment::find($Aa->id)->update([
+        "file"=>$f
+       ]);
+
+
         //update the status of the assigment and upload the file
         $assigment->status=true;
         $assigment->file =Storage::disk('public')->url($filePath);
         // $assigment_id->file=Storage::disk('public')->url($filePath);
 
+        // $allassigment->save();
+
         $assigment->save();
+
+        return $Aa;
+
 
      }
 
@@ -86,15 +101,26 @@ $currentTimestamp = Carbon::now();
 // Add 3 days to the current timestamp
 $deadline = $currentTimestamp->addDays(3);
 
+
+
+       $file= null;
+
          //find the course name using the id
-         $module = Course::find($request->course_id)->title;
+         $module = Course::find($request->course_id);
+
+        //  dd($module->assigments[0]->title);
+         foreach ($module->assigments as $assigment) {
+            if($assigment->title == $request->title){
+               $file = $assigment->title;
+            }
+         }
          //store the course in all course table
 
         $assiments_db = [
-            "module" =>$module,
+            "module" =>$module->title,
             "title"=>$request->title,
             "dateline"=>$deadline,
-            "file" =>$assigment_info->file
+            "file" =>$file
 
            ];
            Allassigment::create($assiments_db);
