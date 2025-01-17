@@ -79,6 +79,11 @@ class User extends Authenticatable implements HasMedia
 
 
 
+public function apointmentComments(){
+    return $this->hasMany(ApointmentComment::class);
+}
+
+
 
     protected $hidden = [
         'password',

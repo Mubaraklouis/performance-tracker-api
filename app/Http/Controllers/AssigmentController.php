@@ -44,7 +44,7 @@ class AssigmentController extends Controller
         $allAfile = $assigment->where('title',$assigment->title)->first()->file;
        $Aa= $allassigment->where('title',$assigment->title)->first();
 
-       $f=$Aa->file = Storage::disk('public')->url($filePath);;
+       $f=$Aa->file = Storage::disk('public')->url($filePath);
        Allassigment::find($Aa->id)->update([
         "file"=>$f
        ]);

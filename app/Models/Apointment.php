@@ -22,4 +22,15 @@ class Apointment extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+           /**
+     *  create one to many relation between user and comments
+     *
+     */
+
+     public function apointmentComments(){
+        return $this->hasMany(ApointmentComment::class);
+    }
+
+
 }
