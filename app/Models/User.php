@@ -83,6 +83,11 @@ public function apointmentComments(){
     return $this->hasMany(ApointmentComment::class);
 }
 
+public function apointmentCommentsReplies(){
+    return $this->hasMany(apointmentCommentReply::class);
+}
+
+
 
 
     protected $hidden = [

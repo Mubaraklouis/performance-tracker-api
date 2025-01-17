@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Apointment;
 use App\Models\ApointmentComment;
+use App\Models\apointmentCommentReply;
 use App\Models\Assigment;
 use App\Models\Course;
 use App\Models\Doctor;
@@ -27,5 +28,6 @@ class DatabaseSeeder extends Seeder
         Doctor::factory(10)->create();
         Apointment::factory(10)->create();
         ApointmentComment::factory(10)->create();
+        apointmentCommentReply::factory(3)->create();
     }
 }

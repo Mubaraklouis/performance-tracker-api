@@ -18,4 +18,8 @@ class ApointmentComment extends Model
         return $this->belongsTo(User::class);
 
     }
+
+    public function apointmentCommentsReplies(){
+        return $this->hasMany(apointmentCommentReply::class);
+    }
 }
