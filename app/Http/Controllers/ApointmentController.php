@@ -42,17 +42,28 @@ class ApointmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Apointment $apointment)
+    public function show(Apointment $apointment,$id)
     {
-        //
+
+        $apointment = $apointment->find($id);
+
+        return response()->json($apointment);
+
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateApointmentRequest $request, Apointment $apointment)
+    public function AproveApointment(UpdateApointmentRequest $request, Apointment $apointment,$id)
     {
-        //
+     $apointment->find($id)->status=true;
+     $apointment->save();
+
+     return response()->json([
+        "message"=>"apointment aproved"
+     ]);
+
     }
 
     /**
