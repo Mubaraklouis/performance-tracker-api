@@ -78,6 +78,21 @@ Route::prefix('doctor')->group(function(){
 
 
 
+/*
+* prefix:(apointment);
+*   the roles prefix is used to add apointment phrase in each api call of the apointment
+* group():
+*   the function is used for grouping all the routes related to the dapointment
+*
+*/
+
+Route::prefix('doctor')->group(function(){
+    require __DIR__.'/apointments/apointment.php';
+ }
+ );
+
+
+
 //get the profile of the user
 
 Route::prefix('profile-image')->group(function(){

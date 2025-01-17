@@ -13,7 +13,9 @@ class ApointmentController extends Controller
      */
     public function index()
     {
-        //
+        $apointments = Apointment::all();
+
+        return response()->json($apointments);
     }
 
     /**
@@ -21,7 +23,20 @@ class ApointmentController extends Controller
      */
     public function store(StoreApointmentRequest $request)
     {
-        //
+        $apointment = [
+            'user_id'=>$request->user_id,
+            'prefared_date'=>$request->prefared_date,
+            'description'=>$request->description,
+            'patient_name'=>$request->patient_name
+        ];
+
+        //create the apointment
+
+        Apointment::create($apointment);
+        return response()->json([
+            "message"=>"apointment created"
+        ]);
+
     }
 
     /**
