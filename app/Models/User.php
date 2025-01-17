@@ -68,6 +68,17 @@ class User extends Authenticatable implements HasMedia
 
 
 
+       /**
+     *  create one to many relation between user and apointments
+     *
+     */
+
+     public function apointments(){
+        return $this->hasMany(Apointment::class);
+       }
+
+
+
 
     protected $hidden = [
         'password',

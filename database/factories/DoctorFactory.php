@@ -18,7 +18,11 @@ class DoctorFactory extends Factory
     {
         return [
          'name'=>fake()->name(),
-         'specialization'=>fake()->name()
+           'gender'=>"male",
+            'hospital' =>fake()->address(),
+         'specialization'=>fake()->name(),
+         'contact'=>fake()->phoneNumber(),
+         'image'=>fake()->imageUrl()
         ];
     }
 }

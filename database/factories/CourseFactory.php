@@ -22,6 +22,7 @@ class CourseFactory extends Factory
            "catOne"=>fake()->randomNumber(),
            "catTwo"=>fake()->randomNumber(),
            "Fat"=>fake()->randomNumber(),
+           "avater"=>fake()->imageUrl(),
            "total"=>fake()->randomNumber(),
         ];
     }
