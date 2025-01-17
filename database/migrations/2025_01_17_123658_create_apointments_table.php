@@ -17,6 +17,7 @@ return new class extends Migration
             $table->timestamp('prefared_date');
             $table->string('description');
             $table->string('patient_name');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

@@ -55,9 +55,12 @@ class ApointmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function AproveApointment(UpdateApointmentRequest $request, Apointment $apointment,$id)
+    public function Aprove(UpdateApointmentRequest $request, Apointment $apointment,$id)
     {
-     $apointment->find($id)->status=true;
+     $apointment= $apointment->find($id);
+     $apointment->update([
+        "status"=>true
+     ]);
      $apointment->save();
 
      return response()->json([
@@ -66,11 +69,36 @@ class ApointmentController extends Controller
 
     }
 
+
+    /**
+     * decline the apointment.
+     */
+
+    public function decline(UpdateApointmentRequest $request, Apointment $apointment,$id)
+    {
+        $apointment= $apointment->find($id);
+        $apointment->update([
+           "status"=>false
+        ]);
+        $apointment->save();
+
+     return response()->json([
+        "message"=>"apointment declined"
+     ]);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Apointment $apointment)
+    public function destroy(Apointment $apointment,$id)
     {
-        //
+    $apointment=$apointment->find($id);
+    $apointment->delete();
+
+    return response()->json([
+        "message"=>"apointment deleted"
+    ]);
+
     }
 }

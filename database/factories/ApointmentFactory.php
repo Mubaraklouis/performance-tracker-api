@@ -21,7 +21,8 @@ class ApointmentFactory extends Factory
             'user_id'=>1,
             'prefared_date'=>fake()->date(),
             'description'=>fake()->sentence(),
-            'patient_name'=> User::find(1)->firstName
+            'patient_name'=> User::find(1)->firstName,
+            'status'=>false
         ];
     }
 }

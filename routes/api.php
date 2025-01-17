@@ -86,7 +86,7 @@ Route::prefix('doctor')->group(function(){
 *
 */
 
-Route::prefix('doctor')->group(function(){
+Route::prefix('apointment')->group(function(){
     require __DIR__.'/apointments/apointment.php';
  }
  );

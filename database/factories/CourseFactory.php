@@ -22,7 +22,7 @@ class CourseFactory extends Factory
            "catOne"=>fake()->randomNumber(),
            "catTwo"=>fake()->randomNumber(),
            "Fat"=>fake()->randomNumber(),
-           "avater"=>fake()->imageUrl(),
+           "avater"=>"https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg?w=2000",
            "total"=>fake()->randomNumber(),
         ];
     }
