@@ -37,6 +37,9 @@ class ApointmentController extends Controller
             "message"=>"apointment created"
         ]);
 
+        //send an event that the assigment is created
+        
+
     }
 
     /**
