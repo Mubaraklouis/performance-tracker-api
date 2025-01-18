@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\apointmentSubmitted;
 use App\Http\Requests\StoreApointmentRequest;
 use App\Http\Requests\UpdateApointmentRequest;
 use App\Models\Apointment;
@@ -30,15 +31,21 @@ class ApointmentController extends Controller
             'patient_name'=>$request->patient_name
         ];
 
+
+
         //create the apointment
 
         Apointment::create($apointment);
+
+         //send an event that the assigment is created
+         event(new apointmentSubmitted());
+         //return the reponse
         return response()->json([
             "message"=>"apointment created"
         ]);
 
-        //send an event that the assigment is created
-        
+
+
 
     }
 

@@ -21,6 +21,6 @@ class apointmentSubmittedNotification
      */
     public function handle(apointmentSubmitted $event): void
     {
-        //
+        dd("apointment submitted");
     }
 }
