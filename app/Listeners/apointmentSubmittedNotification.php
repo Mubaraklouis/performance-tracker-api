@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\apointmentSubmitted;
+use App\Notifications\apointmentCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Notification;
 
 class apointmentSubmittedNotification
 {
@@ -13,7 +15,7 @@ class apointmentSubmittedNotification
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -21,6 +23,10 @@ class apointmentSubmittedNotification
      */
     public function handle(apointmentSubmitted $event): void
     {
-        dd("apointment submitted");
+        $user = $event->user_information;
+        $doctor = $event->doctor_information;
+        $apointment = $event->apointment_information;
+        Notification::send($user,new apointmentCreated($apointment));
+
     }
 }

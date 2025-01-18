@@ -6,6 +6,7 @@ use App\Events\apointmentSubmitted;
 use App\Http\Requests\StoreApointmentRequest;
 use App\Http\Requests\UpdateApointmentRequest;
 use App\Models\Apointment;
+use App\Models\User;
 
 class ApointmentController extends Controller
 {
@@ -26,6 +27,7 @@ class ApointmentController extends Controller
     {
         $apointment = [
             'user_id'=>$request->user_id,
+            'doctor_id'=>$request->doctor_id,
             'prefared_date'=>$request->prefared_date,
             'description'=>$request->description,
             'patient_name'=>$request->patient_name
@@ -38,7 +40,10 @@ class ApointmentController extends Controller
         Apointment::create($apointment);
 
          //send an event that the assigment is created
-         event(new apointmentSubmitted());
+         $user = User::find($request->user_id);
+         $doctor = User::find($request->doctor_id);
+        //  $apointment=Apointment::find()
+         event(new apointmentSubmitted($user,$doctor,$apointment));
          //return the reponse
         return response()->json([
             "message"=>"apointment created"

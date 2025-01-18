@@ -19,6 +19,7 @@ class ApointmentFactory extends Factory
     {
         return [
             'user_id'=>1,
+            'doctor_id'=>2,
             'prefared_date'=>fake()->date(),
             'description'=>fake()->sentence(),
             'patient_name'=> User::find(1)->firstName,

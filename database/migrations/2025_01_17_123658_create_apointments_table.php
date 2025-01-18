@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('apointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('doctor_id');
             $table->timestamp('prefared_date');
             $table->string('description');
             $table->string('patient_name');

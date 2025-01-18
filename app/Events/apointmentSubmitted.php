@@ -13,13 +13,18 @@ use Illuminate\Queue\SerializesModels;
 class apointmentSubmitted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $user_information;
+    public $doctor_information;
+    public $apointment_information;
 
     /**
      * Create a new event instance.
      */
-    public function __construct()
+    public function __construct($user,$doctor,$apointment)
     {
-        //
+        $this->user_information = $user;
+        $this->doctor_information=$doctor;
+        $this->apointment_information = $apointment;
     }
 
     /**
