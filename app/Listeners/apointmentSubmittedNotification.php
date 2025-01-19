@@ -26,7 +26,10 @@ class apointmentSubmittedNotification
         $user = $event->user_information;
         $doctor = $event->doctor_information;
         $apointment = $event->apointment_information;
-        Notification::send($user,new apointmentCreated($apointment));
+        $user->notify(new apointmentCreated($apointment));
+
+        
+        // Notification::send($user,new apointmentCreated($apointment));
 
     }
 }

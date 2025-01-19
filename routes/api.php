@@ -104,15 +104,24 @@ Route::prefix('profile-image')->group(function(){
 Route::get('/auth-user',[usersController::class,'authuserinfo'])->name('user.auth.info');
 
 
-//get all the assigements of the user in all courses
-//get all the courses that the user is enrolled in
-//get the assigments
-
-
-//second approach
 
 //add the course imediately to a table when the course is added
 Route::get('/all-assignments',[AllassigmentController::class,'allAssigments']);
+
+
+/*
+* prefix:(notifications);
+*   the roles prefix is used to add apointment phrase in each api call of the notifications
+* group():
+*   the function is used for grouping all the routes related to the notifications
+*
+*/
+
+Route::prefix('notifications')->group(function(){
+    require __DIR__.'/notifications/notification.php';
+ }
+ );
+
 
 
 

@@ -42,7 +42,6 @@ class ApointmentController extends Controller
          //send an event that the assigment is created
          $user = User::find($request->user_id);
          $doctor = User::find($request->doctor_id);
-        //  $apointment=Apointment::find()
          event(new apointmentSubmitted($user,$doctor,$apointment));
          //return the reponse
         return response()->json([
