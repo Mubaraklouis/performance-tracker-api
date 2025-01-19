@@ -71,7 +71,7 @@ class usersController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::find($id);
+        $user = User::with('roles')->find($id);
         return $user;
     }
 
