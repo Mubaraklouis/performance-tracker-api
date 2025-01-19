@@ -31,8 +31,5 @@ class apointmentSubmittedNotification
         $user->notify(new apointmentCreated($apointment));
         $doctor->notify(new doctorApointmentNotifications($user));
 
-
-
-
     }
 }
