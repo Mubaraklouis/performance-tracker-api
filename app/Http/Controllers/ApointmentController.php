@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\apointmentAproveEvent;
 use App\Events\apointmentSubmitted;
 use App\Http\Requests\StoreApointmentRequest;
 use App\Http\Requests\UpdateApointmentRequest;
@@ -76,6 +77,10 @@ class ApointmentController extends Controller
         "status"=>true
      ]);
      $apointment->save();
+
+     //apointment aprove event calling
+
+     event(new apointmentAproveEvent());
 
      return response()->json([
         "message"=>"apointment aproved"
