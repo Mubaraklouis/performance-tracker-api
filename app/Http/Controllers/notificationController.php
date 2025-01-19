@@ -34,7 +34,7 @@ public function unreadNotifications(User $user,$id){
 
 //get all the unread notifiactions
 
-public function destroy(User $user,$user_id,$notification_id){
+public function destroy(User $user,$notification_id,$user_id){
     $user= $user->find($user_id);
    $user->notifications->find($notification_id)->delete();
     return response()->json(["message"=>"notification deleted"]);
