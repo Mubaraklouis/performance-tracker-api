@@ -12,7 +12,7 @@ class Mark extends Model
         'user_id',
         'catOne',
         'catTwo',
-        'Fat',
+        'fat',
         'total'
     ];
 

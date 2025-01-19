@@ -21,7 +21,22 @@ class MarkController extends Controller
      */
     public function store(StoreMarkRequest $request)
     {
-        //
+        $total = $request->catOne + $request->catTwo + $request->fat;
+        $marks = [
+            'user_id'=>$request->user_id,
+            'course_id'=>$request->course_id,
+            'course_name'=>$request->course_name,
+            'catOne'=>$request->catOne,
+             'catTwo'=>$request->catTwo,
+             'fat'=>$request->fat,
+             'total'=>$total
+
+        ];
+
+        Mark::create($marks);
+        return response()->json([
+            "message"=>"your marks are saved"
+        ]);
     }
 
     /**
@@ -35,9 +50,16 @@ class MarkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMarkRequest $request, Mark $mark)
+    public function update(UpdateMarkRequest $request, Mark $mark,$id)
     {
-        //
+        $mark = $mark->find($id);
+        $mark->update($request->all());
+
+        return response()->json(
+            ["message"=>"marks updated successfully"]
+        );
+
+
     }
 
     /**

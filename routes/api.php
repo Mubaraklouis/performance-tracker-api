@@ -124,6 +124,18 @@ Route::prefix('notifications')->group(function(){
 
 
 
+/*
+* prefix:(marks);
+*   the roles prefix is used to add apointment phrase in each api call of the marks
+* group():
+*   the function is used for grouping all the routes related to the marks
+*
+*/
+
+Route::prefix('marks')->group(function(){
+    require __DIR__.'/marks/marks.php';
+ }
+ );
 
 
 
