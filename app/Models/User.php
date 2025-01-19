@@ -30,8 +30,9 @@ class User extends Authenticatable implements HasMedia
         'lastName',
         'phone',
         'rollNumber',
-        'doctor_id',
-         'avater'
+         'avater',
+         'bio',
+         'hospital'
     ];
 
     /**
