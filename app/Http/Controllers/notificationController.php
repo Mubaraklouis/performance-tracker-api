@@ -14,4 +14,30 @@ public function userNotifications(User $user,$id){
 
     return response()->json($notifications);
 }
+
+//get all the read notifiactions
+
+public function readNotifications(User $user,$id){
+    $user= $user->find($id);
+    $readNotifications = $user->readNotifications;
+    return response()->json($readNotifications);
+}
+
+
+//get all the unread notifiactions
+
+public function unreadNotifications(User $user,$id){
+    $user= $user->find($id);
+    $readNotifications = $user->unreadNotifications;
+    return response()->json($readNotifications);
+}
+
+//get all the unread notifiactions
+
+public function destroy(User $user,$user_id,$notification_id){
+    $user= $user->find($user_id);
+   $user->notifications->find($notification_id)->delete();
+    return response()->json(["message"=>"notification deleted"]);
+}
+
 }
