@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         Doctor::factory(10)->create();
         Apointment::factory(10)->create();
         ApointmentComment::factory(10)->create();
-        apointmentCommentReply::factory(3)->create();
+        // apointmentCommentReply::factory(3)->create();
         Mark::factory(10)->create();
     }
 }
