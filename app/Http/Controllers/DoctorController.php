@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Models\Doctor;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
@@ -14,8 +16,14 @@ class DoctorController extends Controller
      */
     public function index()
     {
-     $doctor= Doctor::all();
-     return $doctor;
+        $doctors = User::with('roles')
+    ->whereHas('roles', function ($query) {
+        $query->where('title', 'doctor');
+    })
+    ->get();
+
+
+     return $doctors;
     }
 
     /**
