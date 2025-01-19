@@ -12,7 +12,7 @@ class Course extends Model
     /** @use HasFactory<\Database\Factories\CourseFactory> */
     use HasFactory;
 
-    protected $fillable = ['title','catOne','Fat','catTwo','Fat','total','description','avater','description'];
+    protected $fillable = ['title','avater','description'];
 
     //create the relationship between the user and courses
 
@@ -23,5 +23,11 @@ class Course extends Model
     //create a relationship to get the assigmnet of the course
     public function assigments(){
         return $this->hasMany(Assigment::class);
+    }
+
+    //get all the marks of users belonging to a particular course
+
+    public function marks(){
+        $this->hasMany(Mark::class);
     }
 }

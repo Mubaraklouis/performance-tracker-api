@@ -29,7 +29,7 @@ class apointmentDeclineNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['doctor'];
+        return ['database'];
     }
 
     /**

@@ -20,9 +20,7 @@ class AssigmentFactory extends Factory
 
             "title"=>fake()->name(),
             "course_id"=>1,
-            "status"=>fake()->boolean(1),
-            "marksObtain"=>(int)rand(1,10),
-            "totalMarks"=>(int)rand(1,10)
+            "status"=>fake()->boolean(0),
 
         ];
     }

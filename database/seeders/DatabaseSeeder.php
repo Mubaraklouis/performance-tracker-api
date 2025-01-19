@@ -8,6 +8,7 @@ use App\Models\apointmentCommentReply;
 use App\Models\Assigment;
 use App\Models\Course;
 use App\Models\Doctor;
+use App\Models\Mark;
 use App\Models\Role;
 use App\Models\User;
 use Database\Factories\RoleFactory;
@@ -29,5 +30,6 @@ class DatabaseSeeder extends Seeder
         Apointment::factory(10)->create();
         ApointmentComment::factory(10)->create();
         apointmentCommentReply::factory(3)->create();
+        Mark::factory(10)->create();
     }
 }

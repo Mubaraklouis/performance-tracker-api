@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assigments', function (Blueprint $table) {
+        Schema::create('marks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
-            $table->boolean('status')->default(false);
-            $table->string('file')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('course_id')->unique();
+            $table->integer('catOne');
+            $table->integer('catTwo');
+            $table->integer('fat');
+            $table->integer('total');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assigments');
+        Schema::dropIfExists('marks');
     }
 };

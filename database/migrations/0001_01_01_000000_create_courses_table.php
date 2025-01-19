@@ -16,10 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->integer('catOne');
-            $table->integer('catTwo');
-            $table->integer('Fat');
-            $table->integer('total');
             $table->string('avater')->nullable();
 
             $table->timestamps();
