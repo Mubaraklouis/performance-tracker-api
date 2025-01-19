@@ -51,7 +51,7 @@ class DoctorController extends Controller
     public function show($id)
     {
         //find the doctor using the id
-        $doctor = Doctor::find($id);
+        $doctor = User::find($id);
         return $doctor;
 
     }
