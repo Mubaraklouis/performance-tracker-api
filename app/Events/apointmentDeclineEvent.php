@@ -10,17 +10,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class apointmentAproveEvent
+class apointmentDeclineEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public $apointment_information;
-    public $doctor_information;
-    public $user_information;
-    public function __construct($user,$doctor,$apointment)
+
+     public $apointment_information;
+     public $doctor_information;
+     public $user_information;
+    public function __construct($doctor,$user,$apointment)
     {
         $this->apointment_information=$apointment;
         $this->doctor_information =$doctor;

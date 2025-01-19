@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\apointmentAproveEvent;
+use App\Events\apointmentDeclineEvent;
 use App\Events\apointmentSubmitted;
 use App\Http\Requests\StoreApointmentRequest;
 use App\Http\Requests\UpdateApointmentRequest;
@@ -78,9 +79,13 @@ class ApointmentController extends Controller
      ]);
      $apointment->save();
 
+     //get the specific user of the apointment
+      $user =$apointment->user;
+      $doctor = User::find($apointment->doctor_id);
+
      //apointment aprove event calling
 
-     event(new apointmentAproveEvent());
+     event(new apointmentAproveEvent($user,$doctor,$apointment));
 
      return response()->json([
         "message"=>"apointment aproved"
@@ -100,6 +105,12 @@ class ApointmentController extends Controller
            "status"=>false
         ]);
         $apointment->save();
+
+
+//get the specific user of the apointment
+         $user =$apointment->user;
+         $doctor = User::find($apointment->doctor_id);
+        event(new apointmentDeclineEvent($user,$doctor,$apointment));
 
      return response()->json([
         "message"=>"apointment declined"

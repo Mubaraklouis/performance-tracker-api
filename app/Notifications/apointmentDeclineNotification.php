@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class apointmentAprovedNotification extends Notification
+class apointmentDeclineNotification extends Notification
 {
     use Queueable;
 
@@ -15,12 +15,11 @@ class apointmentAprovedNotification extends Notification
      * Create a new notification instance.
      */
     public $doctor_information;
-    public $pointment_information;
+    public $apointment_information;
     public function __construct($doctor,$apointment)
     {
         $this->doctor_information=$doctor;
-        $this->pointment_information=$apointment;
-
+        $this->apointment_information=$apointment;
     }
 
     /**
@@ -30,7 +29,7 @@ class apointmentAprovedNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['doctor'];
     }
 
     /**
@@ -52,9 +51,10 @@ class apointmentAprovedNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            "message"=>"Your apointment is aprove",
-            "doctor"=>$this->doctor_information,
-            "apointment"=>$this->pointment_information
+            "message"=>"Sorry Your apointment is being declined try after after sometime",
+            "apointment"=>$this->apointment_information,
+            "doctor"=>$this->doctor_information
+
         ];
     }
 }
