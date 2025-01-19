@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\apointmentSubmitted;
 use App\Notifications\apointmentCreated;
+use App\Notifications\doctorApointmentNotifications;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Notification;
@@ -26,10 +27,12 @@ class apointmentSubmittedNotification
         $user = $event->user_information;
         $doctor = $event->doctor_information;
         $apointment = $event->apointment_information;
+        //notify the user for a the apoint reach the dcotor
         $user->notify(new apointmentCreated($apointment));
+        $doctor->notify(new doctorApointmentNotifications($user));
 
 
-       
+
 
     }
 }
