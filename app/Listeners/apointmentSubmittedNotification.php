@@ -28,8 +28,8 @@ class apointmentSubmittedNotification
         $apointment = $event->apointment_information;
         $user->notify(new apointmentCreated($apointment));
 
-        
-        // Notification::send($user,new apointmentCreated($apointment));
+
+       
 
     }
 }

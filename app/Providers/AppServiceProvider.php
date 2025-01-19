@@ -26,8 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
 
 
-              // Register the policy
-        Event::listen(apointmentSubmitted::class,apointmentSubmittedNotification::class);
+            
 
         ResetPassword::createUrlUsing(function (object $notifiable, string $token) {
             return config('app.frontend_url')."/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
