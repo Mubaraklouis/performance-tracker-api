@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\assigmentSubmittedEvent;
 use App\Http\Requests\StoreAssigmentRequest;
 use App\Http\Requests\UpdateAssigmentRequest;
 use App\Models\Allassigment;
@@ -59,6 +60,11 @@ class AssigmentController extends Controller
 
         $assigment->save();
 
+        //notify the user that the assigment is submitted
+        event(new assigmentSubmittedEvent());
+
+
+
         return $Aa;
 
 
@@ -81,8 +87,6 @@ class AssigmentController extends Controller
         $assigment = [
             "course_id"=>$request->course_id,
             "title"=>$request->title,
-            "marksObtain"=>$request->marksObtain,
-            "totalMarks"=>$request->totalMarks
 
         ];
 
