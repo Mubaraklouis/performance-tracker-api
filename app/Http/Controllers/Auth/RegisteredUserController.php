@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
 
 
         Auth::login($user);
-        $user = User::where('email', $request->email)->first();
+        $user = User::with('roles')->where('email', $request->email)->first();
         return $user;
     }
 
