@@ -14,9 +14,16 @@ class assigmentSubmittedNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public $user_information,$assigment_information,$lecture_information;
+    public function __construct($user,$lecture,$assigment)
     {
-        //
+
+
+        $this->user_information=$user;
+        $this->lecture_information=$lecture;
+        $this->assigment_information=$assigment;
+
+
     }
 
     /**
@@ -26,7 +33,7 @@ class assigmentSubmittedNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -48,11 +55,9 @@ class assigmentSubmittedNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            // -name of the sender
-            // -name of the model
-            // -assigment title
-            "name"=>$user->name,
-            "course_name"
+            "name"=>$this->user_information->name,
+            "assigment_title"=>$this->assigment_information->title,
+            "file"=>$this->assigment_information->title
         ];
     }
 }

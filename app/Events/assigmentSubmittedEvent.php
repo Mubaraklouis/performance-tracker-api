@@ -17,9 +17,14 @@ class assigmentSubmittedEvent
     /**
      * Create a new event instance.
      */
-    public function __construct()
+
+     public $user_information,$assigment_information,$lecture_information;
+    public function __construct($user,$assigment,$lecture)
     {
-        //
+        $this->user_information=$user;
+        $this->lecture_information=$lecture;
+        $this->assigment_information=$assigment;
+
     }
 
     /**

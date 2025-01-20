@@ -21,6 +21,7 @@ class assigmentSubmittedListener
      */
     public function handle(assigmentSubmittedEvent $event): void
     {
+        $user= $event->user_information;
         $user->notify(new apointmentSubmittedNotification());
     }
 }

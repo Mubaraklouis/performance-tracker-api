@@ -60,8 +60,10 @@ class AssigmentController extends Controller
 
         $assigment->save();
 
+        dd($assigment);
+
         //notify the user that the assigment is submitted
-        event(new assigmentSubmittedEvent());
+        // event(new assigmentSubmittedEvent($user,$assigment,$lecture));
 
 
 
