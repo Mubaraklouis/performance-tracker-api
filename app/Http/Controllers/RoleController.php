@@ -83,6 +83,9 @@ class RoleController extends Controller
      $user =User::find($user_id);
      $user->roles()->attach($role_id);
 
+   
+
+
        return[
         "user_id"=>$user_id,
         "role_id"=>$role_id

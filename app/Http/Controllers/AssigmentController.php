@@ -64,12 +64,12 @@ class AssigmentController extends Controller
 
         //notify the user that the assigment is submitted
 
-        $lecture = Role::find(12)->users;
+        $lecture = Role::find(1)->users;
 
 
         //update the catone marks
 
-   
+
 
         event(new assigmentSubmittedEvent($assigment,$lecture));
 

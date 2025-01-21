@@ -36,7 +36,6 @@ class ApointmentController extends Controller
         ];
 
 
-
         //create the apointment
 
 
@@ -54,10 +53,6 @@ class ApointmentController extends Controller
         return response()->json([
             "message"=>"apointment created"
         ]);
-
-
-
-
     }
 
     /**

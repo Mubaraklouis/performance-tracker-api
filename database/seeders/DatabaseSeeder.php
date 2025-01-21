@@ -22,14 +22,80 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
-        Role::factory(10)->create();
+
+        Role::factory()->create(
+            [
+                "title"=>"teacher",
+            ]
+        );
+        Role::factory()->create(
+            [
+                "title"=>"doctor",
+            ]
+        );
+
+        Role::factory()->create(
+            [
+                "title"=>"admin",
+            ]
+        );
         Course::factory(10)->create();
         Assigment::factory(10)->create();
         Doctor::factory(10)->create();
-        Apointment::factory(10)->create();
+        // Apointment::factory(10)->create();
         ApointmentComment::factory(10)->create();
         // apointmentCommentReply::factory(3)->create();
         Mark::factory(10)->create();
+
+
+
+        //default user
+        User::factory()->create([
+            "firstName"=>"Dr. 2 pac",
+            "lastName"=>"Atwok",
+            "email"=>"adwok@doctor.com",
+            "password"=>"12345678",
+            "phone"=>"07924667725",
+            "specialization"=>"Eye Doctor",
+            "hospital"=>"Juba Teacher",
+            "bio"=>"am upcoming doctor to improve the world",
+        ]);
+
+           //default user
+           User::factory()->create([
+            "firstName"=>"Mubarak",
+            "lastName"=>"Louis",
+            "email"=>"mubarak@student.com",
+            "password"=>"12345678",
+            "phone"=>"07924667725",
+            "specialization"=>"normal student",
+            "hospital"=>"Juba Teacher",
+            "bio"=>"am upcoming doctor to improve the world",
+        ]);
+
+             //default user
+             User::factory()->create([
+                "firstName"=>"Tr.Oplona",
+                "lastName"=>"James",
+                "email"=>"oplano@teacher.com",
+                "password"=>"12345678",
+                "phone"=>"07924667725",
+                "specialization"=>"experiecne teacher",
+                "hospital"=>"Juba Teacher",
+                "bio"=>"am upcoming doctor to improve the world",
+            ]);
+
+            User::factory(10)->create();
+
+            $user1= User::find(1);
+            // $role1 = Role::find(1);
+
+            $user1->roles()->attach(2);
+
+
+            $user3 = User::find(3);
+            // $role2 = Role::find(2);
+
+            $user3->roles()->attach(1);
     }
 }
