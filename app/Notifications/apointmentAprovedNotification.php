@@ -15,11 +15,11 @@ class apointmentAprovedNotification extends Notification
      * Create a new notification instance.
      */
     public $doctor_information;
-    public $pointment_information;
+    public $apointment_information;
     public function __construct($doctor,$apointment)
     {
         $this->doctor_information=$doctor;
-        $this->pointment_information=$apointment;
+        $this->apointment_information=$apointment;
 
     }
 
@@ -54,7 +54,7 @@ class apointmentAprovedNotification extends Notification
         return [
             "message"=>"Your apointment is aprove",
             "doctor"=>$this->doctor_information,
-            "apointment"=>$this->pointment_information
+            "apointment"=>$this->apointment_information
         ];
     }
 }

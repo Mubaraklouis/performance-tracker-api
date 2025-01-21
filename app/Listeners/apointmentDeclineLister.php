@@ -25,6 +25,7 @@ class apointmentDeclineLister
         $user = $event->user_information;
         $apointment = $event->apointment_information;
         $doctor = $event->doctor_information;
+        
         $user->notify(new apointmentDeclineNotification($doctor,$apointment));
     }
 }

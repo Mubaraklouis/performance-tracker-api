@@ -15,10 +15,12 @@ class doctorApointmentNotifications extends Notification
      * Create a new notification instance.
      */
 
-     public $user_information;
-    public function __construct($user)
+     public $user_information,$apointment;
+
+    public function __construct($user,$apointment)
     {
         $this->user_information = $user;
+        $this->apointment=$apointment;
     }
 
     /**
@@ -51,7 +53,8 @@ class doctorApointmentNotifications extends Notification
     {
         return [
             "nofication"=>"new user has book an an apointment",
-             "user"=>$this->user_information
+             "user"=>$this->user_information,
+             "apointment"=>$this->apointment
 
         ];
     }
