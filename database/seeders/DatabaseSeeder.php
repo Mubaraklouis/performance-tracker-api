@@ -61,6 +61,8 @@ class DatabaseSeeder extends Seeder
             "bio"=>"am upcoming doctor to improve the world",
         ]);
 
+
+
            //default user
            User::factory()->create([
             "firstName"=>"Mubarak",
@@ -85,6 +87,18 @@ class DatabaseSeeder extends Seeder
                 "bio"=>"am upcoming doctor to improve the world",
             ]);
 
+               //default user
+        User::factory()->create([
+            "firstName"=>"Dr. Abdallah",
+            "lastName"=>"Aleer",
+            "email"=>"abdallah@doctor.com",
+            "password"=>"12345678",
+            "phone"=>"07924667725",
+            "specialization"=>"Physiology",
+            "hospital"=>"Juba Teacher",
+            "bio"=>"Incase of any new signing your your football team or basketball team i can examine them",
+        ]);
+
             User::factory(10)->create();
 
             $user1= User::find(1);
@@ -97,5 +111,7 @@ class DatabaseSeeder extends Seeder
             // $role2 = Role::find(2);
 
             $user3->roles()->attach(1);
+            $user4=User::find(4);
+            $user4->roles()->attach(2);
     }
 }
