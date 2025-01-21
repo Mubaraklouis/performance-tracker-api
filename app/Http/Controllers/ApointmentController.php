@@ -39,7 +39,12 @@ class ApointmentController extends Controller
 
         //create the apointment
 
+
         Apointment::create($apointment);
+
+        $apointment = Apointment::where('user_id',$request->user_id);
+
+        //find the full
 
          //send an event that the assigment is created
          $user = User::find($request->user_id);
