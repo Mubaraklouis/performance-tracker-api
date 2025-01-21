@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateAssigmentRequest;
 use App\Models\Allassigment;
 use App\Models\Assigment;
 use App\Models\Course;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
@@ -35,11 +37,9 @@ class AssigmentController extends Controller
         //get the file
         $filePath = $request->file('file')->store('uploaded_files', 'public');
 
-
-
-
-
         $assigment = Assigment::find($assigment_id);
+
+        // dd($assigment->course);
 
 
         $allAfile = $assigment->where('title',$assigment->title)->first()->file;
@@ -60,15 +60,20 @@ class AssigmentController extends Controller
 
         $assigment->save();
 
-        dd($assigment);
+
 
         //notify the user that the assigment is submitted
-        // event(new assigmentSubmittedEvent($user,$assigment,$lecture));
+
+        $lecture = Role::find(12)->users;
 
 
+        //update the catone marks
+
+   
+
+        event(new assigmentSubmittedEvent($assigment,$lecture));
 
         return $Aa;
-
 
      }
 
@@ -93,12 +98,9 @@ class AssigmentController extends Controller
         ];
 
 
-
         Assigment::create($assigment);
 
         $assigment_info = Assigment::where('title', $request->title)->first();
-
-
 
 
 // Current timestamp
@@ -106,9 +108,6 @@ $currentTimestamp = Carbon::now();
 
 // Add 3 days to the current timestamp
 $deadline = $currentTimestamp->addDays(3);
-
-
-
        $file= null;
 
          //find the course name using the id
@@ -133,8 +132,6 @@ $deadline = $currentTimestamp->addDays(3);
         return [
             "message"=>"assigment created"
         ];
-
-
     }
 
     /**
@@ -155,7 +152,6 @@ $deadline = $currentTimestamp->addDays(3);
         return [
             "message"=>"assigment updated"
         ];
-
     }
 
     /**
@@ -165,7 +161,6 @@ $deadline = $currentTimestamp->addDays(3);
     {
         $assigment = Assigment::find($id);
         $assigment->delete();
-
         return [
             "message"=>"assigment deleted"
         ];

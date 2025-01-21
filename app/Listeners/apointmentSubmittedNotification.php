@@ -28,7 +28,7 @@ class apointmentSubmittedNotification
         $doctor = $event->doctor_information;
         $apointment = $event->apointment_information;
         //notify the user for a the apoint reach the dcotor
-        $user->notify(new apointmentCreated($apointment));
+        $user->notify(new apointmentCreated($apointment,$doctor));
         $doctor->notify(new doctorApointmentNotifications($user));
 
     }
