@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->boolean('status')->default(false);
             $table->string('file')->nullable();
-            $table->string('assigment_file');
+            $table->string('assigment_file')->nullable();
             $table->timestamps();
         });
     }

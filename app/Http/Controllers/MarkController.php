@@ -13,6 +13,13 @@ class MarkController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+
+     public function index(Request $request,$id){
+        $user_id = $request->user_id;
+       $marks = User::find($id)->marks;
+        return $marks;
+     }
     public function gradeCatOne(Request $request)
     {
         $user = User::find($request->user_id);
