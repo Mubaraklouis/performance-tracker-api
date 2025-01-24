@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('course_id')->unique();
+            $table->string('course_name');
             $table->integer('catOne');
             $table->integer('catTwo');
             $table->integer('fat');

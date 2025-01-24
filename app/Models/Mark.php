@@ -12,6 +12,7 @@ class Mark extends Model
         'user_id',
         'catOne',
         'catTwo',
+        'course_name',
         'fat',
         'total'
     ];
