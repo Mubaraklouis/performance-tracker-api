@@ -12,6 +12,7 @@ class Assigment extends Model
 
     protected $fillable = [
         'course_id',
+        'assigment_file',
         'title',
         'status',
         'totalMarks',

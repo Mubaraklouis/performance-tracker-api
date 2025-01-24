@@ -89,16 +89,23 @@ class AssigmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreAssigmentRequest $request)
+    public function store(StoreAssigmentRequest $request,Assigment $ass)
     {
+
+        $filePath = $request->file('assigment_file')->store('uploaded_files', 'public');
+        $assigment_url= Storage::disk('public')->url($filePath);
+
+        // dd($assigment_url);
         $assigment = [
             "course_id"=>$request->course_id,
             "title"=>$request->title,
+            "assigment_file" =>$assigment_url
 
         ];
 
 
         Assigment::create($assigment);
+
 
         $assigment_info = Assigment::where('title', $request->title)->first();
 

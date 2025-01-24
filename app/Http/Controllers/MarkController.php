@@ -39,14 +39,14 @@ class MarkController extends Controller
     public function store(StoreMarkRequest $request)
     {
         $user = User::find($request->user_id);
-        $cat_one = 0;
 
-        $total = $cat_one + $request->catTwo + $request->fat;
+
+        $total = $request->catOne + $request->catTwo + $request->fat;
         $marks = [
             'user_id'=>$request->user_id,
             'course_id'=>$request->course_id,
             'course_name'=>$request->course_name,
-            'catOne'=>$cat_one,
+            'catOne'=>$request->catOne,
              'catTwo'=>$request->catTwo,
              'fat'=>$request->fat,
              'total'=>$total
