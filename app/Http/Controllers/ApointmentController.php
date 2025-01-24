@@ -41,14 +41,11 @@ class ApointmentController extends Controller
 
         Apointment::create($apointment);
 
-        $apointment_information = Apointment::where('user_id',$request->user_id)->first();
-
-        //find the full
 
          //send an event that the assigment is created
          $user = User::find($request->user_id);
          $doctor = User::find($request->doctor_id);
-         event(new apointmentSubmitted($user,$doctor,$apointment_information));
+         event(new apointmentSubmitted($user,$doctor,$apointment));
          //return the reponse
         return response()->json([
             "message"=>"apointment created"

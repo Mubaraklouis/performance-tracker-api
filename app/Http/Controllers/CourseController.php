@@ -61,7 +61,7 @@ class CourseController extends Controller
     public function show(Course $course ,$id)
     {
         //find the coirse
-        $course = $course->with('assigments')->find($id);
+        $course = $course->with(['assigments','users'])->find($id);
 
         return $course;
 

@@ -52,7 +52,7 @@ class apointmentCreated extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            "message"=>"apointment created",
+            "message"=>"Apointment created successfully",
             "apointment"=>$this->apointment_information,
             "doctor"=>$this->doctor_information
         ];
