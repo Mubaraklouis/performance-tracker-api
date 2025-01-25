@@ -34,12 +34,15 @@ class AssigmentController extends Controller
      public function submitAssigment( Request $request,$assigment_id,Allassigment $allassigment){
         $assigment = Assigment::find($assigment_id);
 
+
+
         //get the file
         $filePath = $request->file('file')->store('uploaded_files', 'public');
 
         $assigment = Assigment::find($assigment_id);
 
-        // dd($assigment->course);
+
+
 
 
         $allAfile = $assigment->where('title',$assigment->title)->first()->file;
@@ -67,11 +70,13 @@ class AssigmentController extends Controller
         $lecture = Role::find(1)->users;
 
 
-        //update the catone marks
+        //get the user who submitted the assigment
+
+        $user = User::find($request->user_id);
 
 
 
-        event(new assigmentSubmittedEvent($assigment,$lecture));
+        event(new assigmentSubmittedEvent($assigment,$lecture,$user));
 
         return $Aa;
 

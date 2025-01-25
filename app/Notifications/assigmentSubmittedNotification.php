@@ -14,13 +14,14 @@ class assigmentSubmittedNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public $assigment_information,$lecture_information;
-    public function __construct($lecture,$assigment)
+    public $assigment_information,$lecture_information,$user_information;
+    public function __construct($lecture,$assigment,$user)
     {
 
 
         $this->lecture_information=$lecture;
         $this->assigment_information=$assigment;
+        $this->user_information=$user;
 
 
     }
@@ -57,7 +58,8 @@ class assigmentSubmittedNotification extends Notification
             // "name"=>$this->user_information->name,
             "message"=>"New assigment submitted",
             "assigment_title"=>$this->assigment_information->title,
-            "file"=>$this->assigment_information->file
+            "file"=>$this->assigment_information->file,
+            "user"=>$this->user_information
         ];
     }
 }

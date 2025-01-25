@@ -27,7 +27,8 @@ class assigmentSubmittedListener
         // $users->notify(new apointmentSubmittedNotification());
         $assigment = $event->assigment_information;
         $lecture = $event->lecture_information;
+        $users=$event->user_information;
 
-        Notification::send($users, new assigmentSubmittedNotification($lecture,$assigment));
+        Notification::send($users, new assigmentSubmittedNotification($lecture,$assigment,$users));
     }
 }
