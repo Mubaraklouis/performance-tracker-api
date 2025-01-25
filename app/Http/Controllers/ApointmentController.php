@@ -9,6 +9,7 @@ use App\Http\Requests\StoreApointmentRequest;
 use App\Http\Requests\UpdateApointmentRequest;
 use App\Models\Apointment;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ApointmentController extends Controller
 {
@@ -36,10 +37,16 @@ class ApointmentController extends Controller
         ];
 
 
+
+
         //create the apointment
 
 
         Apointment::create($apointment);
+
+
+        $apointment = DB::table('apointments')->latest('id')->first();
+
 
 
          //send an event that the assigment is created
