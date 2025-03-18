@@ -1,67 +1,165 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Tracker API - README</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Performance Tracker API</h1>
+        <p>
+            The Performance Tracker API is a Laravel-based application designed to help manage courses, assignments, and track performance in real-time. It also includes real-time notifications to keep users updated. This is an MVP (Minimum Viable Product) and will continue to evolve with additional features and improvements.
+        </p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+        <h2>Features</h2>
+        <ul>
+            <li><strong>Course Management</strong>: Create, update, delete, and view courses.</li>
+            <li><strong>Assignment Management</strong>: Manage assignments for each course, including due dates and status.</li>
+            <li><strong>Performance Tracking</strong>: Track progress and performance for courses and assignments.</li>
+            <li><strong>Real-Time Notifications</strong>: Receive real-time updates using WebSocket or Pusher.</li>
+        </ul>
 
-## About Laravel
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>Backend</strong>: Laravel (PHP framework)</li>
+            <li><strong>Database</strong>: MySQL</li>
+            <li><strong>Real-Time Notifications</strong>: Laravel Echo, Pusher, or WebSocket</li>
+            <li><strong>API Documentation</strong>: Swagger or Postman</li>
+        </ul>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+        <h2>Version</h2>
+        <p>
+            <strong>MVP Version</strong>: 1.0.0
+        </p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+        <h2>Getting Started</h2>
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>PHP 8.0 or higher</li>
+            <li>Composer (for dependency management)</li>
+            <li>MySQL 5.7 or higher</li>
+            <li>Node.js and NPM (for frontend assets if applicable)</li>
+        </ul>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+        <h3>Installation</h3>
+        <ol>
+            <li>Clone the repository:
+                <pre><code>git clone https://github.com/yourusername/performance-tracker-api.git</code></pre>
+            </li>
+            <li>Navigate to the project directory:
+                <pre><code>cd performance-tracker-api</code></pre>
+            </li>
+            <li>Install PHP dependencies:
+                <pre><code>composer install</code></pre>
+            </li>
+            <li>Install JavaScript dependencies (if applicable):
+                <pre><code>npm install</code></pre>
+            </li>
+            <li>Create a copy of the <code>.env.example</code> file and rename it to <code>.env</code>:
+                <pre><code>cp .env.example .env</code></pre>
+            </li>
+            <li>Generate an application key:
+                <pre><code>php artisan key:generate</code></pre>
+            </li>
+            <li>Configure your database in the <code>.env</code> file:
+                <pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=performance_tracker
+DB_USERNAME=root
+DB_PASSWORD=yourpassword</code></pre>
+            </li>
+            <li>Run migrations to set up the database:
+                <pre><code>php artisan migrate</code></pre>
+            </li>
+            <li>Seed the database with sample data (optional):
+                <pre><code>php artisan db:seed</code></pre>
+            </li>
+            <li>Start the development server:
+                <pre><code>php artisan serve</code></pre>
+            </li>
+        </ol>
 
-## Learning Laravel
+        <h3>API Documentation</h3>
+        <p>
+            The API documentation is available via Swagger or Postman. You can access it by visiting:
+            <pre><code>http://localhost:8000/api/documentation</code></pre>
+        </p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+        <h2>Future Development</h2>
+        <p>
+            This is an MVP, and the following features are planned for future releases:
+        </p>
+        <ul>
+            <li>User authentication and role-based access control.</li>
+            <li>Integration with third-party tools (e.g., Google Classroom).</li>
+            <li>Advanced analytics and reporting.</li>
+            <li>Mobile app integration.</li>
+            <li>Enhanced real-time features using WebSocket.</li>
+        </ul>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+        <h2>Contributing</h2>
+        <p>
+            Contributions are welcome! Please follow these steps:
+        </p>
+        <ol>
+            <li>Fork the repository.</li>
+            <li>Create a new branch for your feature or bugfix.</li>
+            <li>Submit a pull request with a detailed description of your changes.</li>
+        </ol>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+        <h2>License</h2>
+        <p>
+            This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.
+        </p>
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# performance-tracker-hackathon
+        <h2>Contact</h2>
+        <p>
+            For questions or feedback, please contact:
+            <br>
+            <strong>Your Name</strong> - <a href="mailto:your.email@example.com">your.email@example.com</a>
+        </p>
+    </div>
+</body>
+</html>
